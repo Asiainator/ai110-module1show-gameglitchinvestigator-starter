@@ -1,3 +1,5 @@
+## Refactored Functions that should be in logic_utils.py to be imported into logic_utils.py with the help of Claude seperated UI and Functions
+
 import random
 import streamlit as st
 from logic_utils import get_range_for_difficulty, parse_guess, check_guess, update_score
@@ -69,6 +71,7 @@ with col2:
 with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
+## added playing status to prevent users to continue guessing after losing or winning and hitting new game with the help of Claude AI
 if new_game:
     st.session_state.attempts = 0
     st.session_state.secret = random.randint(1, 100)
@@ -87,6 +90,7 @@ if st.session_state.status != "playing":
 if submit:
     ok, guess_int, err = parse_guess(raw_guess)
 
+    ## Added A Duplicate Guess Preveneter using Claude AI
     if not ok:
         st.error(err)
     elif guess_int in st.session_state.history:
