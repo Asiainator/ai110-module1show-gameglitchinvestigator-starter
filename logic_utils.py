@@ -32,6 +32,8 @@ def parse_guess(raw: str):
     return True, value, None
 
 
+## Fixed a bug in the scoring logic where the attempt number was not being correctly as being higher or lower, infact reversed, with the help of Claude
+
 def check_guess(guess, secret):
     """
     Compare guess to secret and return (outcome, message).
@@ -49,6 +51,7 @@ def check_guess(guess, secret):
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
+    ## Attempted moved as guessing an invalid answer would increase the attempt number by Claude AI
     if outcome == "Win":
         points = 100 - 10 * (attempt_number + 1)
         if points < 10:
