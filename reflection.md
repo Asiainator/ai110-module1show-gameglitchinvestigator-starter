@@ -1,48 +1,56 @@
-# 🎮 Game Glitch Investigator: The Impossible Guesser
+# 💭 Reflection: Game Glitch Investigator
 
-## 🚨 The Situation
+Answer each question in 3 to 5 sentences. Be specific and honest about what actually happened while you worked. This is about your process, not trying to sound perfect.
 
-You asked an AI to build a simple "Number Guessing Game" using Streamlit.
-It wrote the code, ran away, and now the game is unplayable. 
+## 1. What was broken when you started?
 
-- You can't win.
-- The hints lie to you.
-- The secret number seems to have commitment issues.
-
-## 🛠️ Setup
-
-1. Install dependencies: `pip install -r requirements.txt`
-2. Run the broken app: `python -m streamlit run app.py`
-
-## 🕵️‍♂️ Your Mission
-
-1. **Play the game.** Open the "Developer Debug Info" tab in the app to see the secret number. Try to win.
-2. **Find the State Bug.** Why does the secret number change every time you click "Submit"? Ask ChatGPT: *"How do I keep a variable from resetting in Streamlit when I click a button?"*
-3. **Fix the Logic.** The hints ("Higher/Lower") are wrong. Fix them.
-4. **Refactor & Test.** - Move the logic into `logic_utils.py`.
-   - Run `pytest` in your terminal.
-   - Keep fixing until all tests pass!
-
-## 📝 Document Your Experience
-
-- [ ] Describe the game's purpose.
-   Higher or Lower guessing game with a range of number
-- [ ] Detail which bugs you found.
-   - Bugs Found 
+- Bugs Found 
 - 1: Opposite hints, when the target number was higher it showed lower as the hint, when the target number was lower it showed higher as the hint
 - 2: You can submit the same number multiple times as guesses, when it should not allow that stating an error message and not using your guess
 - 3: You can submit not valid numbers/ words and it takes up a guess even though it shows an error message, when it should not take a guess and show an error message.
 - 4: New game button does not reset the ability to guess again, only resets the secret number when it should reset the ability to guess so the user can play a new game.
-- [ ] Explain what fixes you applied.
-- Fixing opposite hints was fixing comparison.
-- Adding Duplicate Guessing Detection
-- Fixing when the Attempts Counter is added to, to make it consistent and more correct
-= Adding a playing state to make sure the user can create a new game
 
-## 📸 Demo
+---
 
-- ![screenshot](demo.png) [Insert a screenshot of your fixed, winning game here]
+## 2. How did you use AI as a teammate?
 
-## 🚀 Stretch Features
+- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+  Claude
+- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
+  The unnesscarry parsing of the guessed number into a string.
+- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+  It assumed how i wanted the test folder ran and put it into test_game_logic.py instead of creating a new test file.
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+---
+
+## 3. Debugging and testing your fixes
+
+- How did you decide whether a bug was really fixed?
+  Through human trial and error and manually checking.
+- Describe at least one test you ran (manual or using pytest) and what it showed you about your code.
+  Fact checking the new game button works whether a win or lost.  
+- Did AI help you design or understand any tests? How?
+  Yes it explained the logic behind the functions and gave them clear names in the function.
+
+---
+
+## 4. What did you learn about Streamlit and state?
+
+- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+  It basically reruns  your code everytime it gets interacted with but this creates issues as variables get recreated so random variables become differnt and session states allow you to keep data over. 
+
+---
+
+## 5. Looking ahead: your developer habits
+
+- What is one habit or strategy from this project that you want to reuse in future labs or projects?
+
+     Most likely using AI to help diagnoise the problem area and then breaking down the issue.
+
+- What is one thing you would do differently next time you work with AI on a coding task?
+
+  Be more specific with what I want and spefically the area i want it to work in. Preventing any miscommunications with AI is a must.
+
+- In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+ I was typically against AI code because to me it makes me think less but in reality it just switches my job to debugger and makes me understand why companies are requireing AI usage because this is super fast, as this is my real project using AI to help code.
